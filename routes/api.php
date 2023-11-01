@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 // Route('/users', [UserController::class]);
 Route::patch('/users', [UserController::class, 'update']);
@@ -27,9 +30,4 @@ Route::get('/removeSale', [SaleController::class, 'removeSale']);
 Route::post('/payment', [PaymentController::class, 'pay']);
 Route::post('/payment-pix', [PaymentController::class, 'pix']);
 
-
-Route::get('/', function () {
-    return response()->json([
-        'success' => true
-    ]);
-});
+Route::post('/login',[LoginController::class, 'login']);
